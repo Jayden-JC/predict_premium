@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block masthead %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5">Your Predicted Insurance Premium</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+{% endblock %}
+
+{% block container %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">{% block title %}{% endblock %}</h1>
+        <p class="lead">{% block lead %}{% endblock %}</p>
+        <hr class="my-4">
+        <p>
+            <form>
+                <fieldset disabled>
+                    <div class="form-group row">
+                        <label for="disabledTextInput" class="col-sm-2 col-form-label">Predicted premium</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ result }}$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="disabledTextInput" class="col-sm-2 col-form-label">If you lose weight</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ result_losebmi }}$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="disabledTextInput" class="col-sm-2 col-form-label">If you quit smoking</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ result_nonsmoker }}$">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="disabledTextInput" class="col-sm-2 col-form-label">If you do both</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="disabledTextInput" class="form-control" placeholder="{{ result_both }}$">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </p>
+    </div>
+</div>
+{% endblock %}

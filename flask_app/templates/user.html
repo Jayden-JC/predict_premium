@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block masthead %}
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5">User</h1>
+                            <!-- Signup form-->
+                            <form method="POST" action="/user/api/read">
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label for="inputUsername2" class="sr-only">Username</label>
+                                    <input name="username" type="text" class="form-control" id="inputUsername2" placeholder="Username">
+                                </div>
+                                <button type="submit" class="btn btn-primary mb-2">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+{% endblock %}
+
+{% block container %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">{% block title %}User list{% endblock %}</h1>
+        <p class="lead">{% block lead %}{% endblock %}</p>
+        <hr class="my-4">
+        <p>
+          <form method="GET" action="/user/add">
+            <button type="submit" class="btn btn-primary mb-2">Add</button>
+        </form>
+        {% if user_list %}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">username</th>
+              <th scope="col">age</th>
+              <th scope="col">sex</th>
+              <th scope="col">bmi</th>
+              <th scope="col">somker</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user in user_list %}
+            <tr>
+              <th scope="row">{{ user.id }}</th>
+              <td>{{ user.username }}</td>
+              <td>{{ user.age }}</td>
+              <td>{{ user.sex }}</td>
+              <td>{{ user.bmi }}</td>
+              <td>{{ user.smoker }}</td>
+              <td>
+                <a class="btn btn-secondary", href='/user/modify/{{ user.username }}'>
+                  Update
+                </a>
+                <a class="btn btn-secondary", href='/user/api/delete/{{ user.username }}'>
+                  Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+        </p>
+    </div>
+</div>
+{% endblock %}

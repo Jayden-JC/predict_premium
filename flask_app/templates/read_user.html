@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block masthead %}
+{% endblock %}
+
+{% block container %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">{% block title %}{% endblock %}</h1>
+        <p class="lead">{% block lead %}{% endblock %}</p>
+        <hr class="my-4">
+        <p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">username</th>
+                <th scope="col">age</th>
+                <th scope="col">sex</th>
+                <th scope="col">bmi</th>
+                <th scope="col">somker</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">{{ user.id }}</th>
+                <td>{{ user.username }}</td>
+                <td>{{ user.age }}</td>
+                <td>{{ user.sex }}</td>
+                <td>{{ user.bmi }}</td>
+                <td>{{ user.smoker }}</td>
+                <td>
+                  <a class="btn btn-secondary", href='/user/modify/{{ user.username }}'>
+                      Update
+                  </a>
+                  <a class="btn btn-secondary", href='/user/api/delete/{{ user.username }}'>
+                      Delete
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </p>
+    </div>
+</div>
+{% endblock %}
